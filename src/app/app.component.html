@@ -2,7 +2,12 @@
 
   <!-- Cabecero centrado -->
 
-  <app-cabecera/>
+  <app-cabecera 
+  [presupuestoTotal]="getPresupuestoTotal()"
+  [ingresoTotal]="getIngresoTotal()"
+  [egresoTotal]="getEgresoTotal()"
+  [porcentajeTotal]="getPorcentajeTotal()"
+  />
 
   <!-- Formulario centrado -->
   

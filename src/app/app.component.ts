@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { CabeceraComponent } from "./cabecera/cabecera.component";
 import { FormularioComponent } from "./formulario/formulario.component";
 import { IngresoComponent } from "./ingreso/ingreso.component";
@@ -11,7 +10,7 @@ import { EgresoService } from './egreso/egreso.service';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CabeceraComponent, FormularioComponent, IngresoComponent, EgresoComponent],
+  imports: [CabeceraComponent, FormularioComponent, IngresoComponent, EgresoComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -42,9 +41,11 @@ export class AppComponent {
     return egresoTotal;
   }
 
-  getPorcentajeTotal(){
-    return this.getEgresoTotal()/this.getIngresoTotal();
+  getPorcentajeTotal(){   
+  const totalIngresos = this.getIngresoTotal();
+  return totalIngresos > 0 ? this.getEgresoTotal() / totalIngresos : 0;
   }
+    
 
   getPresupuestoTotal(){
     return this.getIngresoTotal() - this.getEgresoTotal();
