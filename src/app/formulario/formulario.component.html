@@ -3,19 +3,32 @@
     <div class="col-md-8">
         <form class="row g-2">
             <div class="col-auto">
-                <select class="form-select bg-success">
+                <select (change)="tipoOperacion($event)"
+                class="form-select"
+                [ngClass]="{'bg-danger': tipo == 'egresoOperacion',
+                    'bg-success': tipo == 'ingresoOperacion'
+                }">
                     <option value="ingresoOperacion" selected>+</option>
                     <option value="egresoOperacion">-</option>
                 </select>
             </div>
             <div class="col">
-                <input type="text" class="form-control border-success" placeholder="Descripción" required />
+                <input type="text" class="form-control border-success" placeholder="Descripción" required
+                [ngClass]="{'bg-danger': tipo == 'egresoOperacion',
+                    'bg-success': tipo == 'ingresoOperacion'
+                }" />
             </div>
             <div class="col-auto">
-                <input type="number" class="form-control border-success" placeholder="Valor" required />
+                <input type="number" class="form-control border-success" placeholder="Valor" required 
+                [ngClass]="{'bg-danger': tipo == 'egresoOperacion',
+                    'bg-success': tipo == 'ingresoOperacion'
+                }"/>
             </div>
             <div class="col-auto">
-                <button type="submit" class="btn btn-success">
+                <button type="submit" class="btn"
+                [ngClass]="{'bg-danger': tipo == 'egresoOperacion',
+                    'bg-success': tipo == 'ingresoOperacion'
+                }">
                     <i class="bi bi-check-circle"></i> <!-- Bootstrap Icon -->
                 </button>
             </div>
