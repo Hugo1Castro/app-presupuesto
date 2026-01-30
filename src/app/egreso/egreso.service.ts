@@ -12,7 +12,7 @@ export class EgresoService {
   ];
   eliminar(egreso: Egreso){
     const indice: number = this.egresos.indexOf(egreso);
-    // if(indice! == -1){}
+    if(indice! == -1){}
     this.egresos.splice(indice, 1);
   
   }

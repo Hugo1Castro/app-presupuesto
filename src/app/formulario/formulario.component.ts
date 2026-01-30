@@ -19,14 +19,15 @@ export class FormularioComponent {
 descripcionInput: string | null = null;
 valorInput: number | null = null;
 
-constructor(private ingresoServicio: IngresoService, private egresoServicio: EgresoService) {}
+constructor(private ingresoServicio: IngresoService,
+  private egresoServicio: EgresoService) {}
 
   tipoOperacion(event: Event){
     const elementoSelect = event.target as HTMLSelectElement;
     this.tipo = elementoSelect.value;
   }
   agregarValor(){
-    console.log("El tipo seleccionado es: ", this.tipo); // <-- ESPÍA 1
+    console.log("El tipo seleccionado es: ", this.tipo); // <-- CONTROL 1
     if(this.descripcionInput != null && this.valorInput != null){
       if(this.tipo == 'ingresoOperacion'){
         this.ingresoServicio.ingresos.push(
@@ -34,7 +35,7 @@ constructor(private ingresoServicio: IngresoService, private egresoServicio: Egr
         )
       }
       else{
-        console.log("Entró a la lógica de EGRESO porque el IF falló"); // <-- ESPÍA 2
+        console.log("Entró a la lógica de EGRESO porque el IF falló"); // <-- CONTROL 2
         this.egresoServicio.egresos.push(
         new Egreso(this.descripcionInput, this.valorInput)
       )
